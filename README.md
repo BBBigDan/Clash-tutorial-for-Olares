@@ -12,7 +12,47 @@ Use the [clash-premium-installer](https://github.com/Kr328/clash-premium-install
 
 - Make sure to choose the premium version of clash-core, premium version, premium version (important things should be repeated three times).
 
-- After extracting clash-core, copy it to /usr/bin/clash. Some tutorials may suggest using /usr/local/bin/clash, but if you use that directory, you might encounter issues finding clash in subsequent operations, which would require changing environment variables and startup configurations—too troublesome. It’s better to just use /usr/bin/clash.
+- Modify the script `installer.sh` in [clash-premium-installer](https://github.com/Kr328/clash-premium-installer). Change the github repo address from `Dreamacro/clash` to `Kuingsmile/clash-core`
+    ```
+    sed -i 's/Dreamacro\/clash/Kuingsmile\/clash-core/g' installer.sh
+    ```
+- Modify the script `scripts/setup-tun.sh`, add two rules to the nftable configuration.
+  ```
+
+  ...
+  
+      chain local-dns-redirect {
+        type nat hook output priority 0; policy accept;
+        
+        ip protocol != { tcp, udp } accept
+        
+        meta cgroup $BYPASS_CGROUP_CLASSID accept
+        ip daddr 127.0.0.0/8 accept
+        ip daddr 10.0.0.0/8 accept
+        
+        udp dport 53 dnat $FORWARD_DNS_REDIRECT
+        tcp dport 53 dnat $FORWARD_DNS_REDIRECT
+    }
+
+  ...
+
+      chain forward-dns-redirect {
+        type nat hook prerouting priority 0; policy accept;
+        
+        ip protocol != { tcp, udp } accept
+        ip daddr 10.0.0.0/8 accept
+        
+        udp dport 53 dnat $FORWARD_DNS_REDIRECT
+        tcp dport 53 dnat $FORWARD_DNS_REDIRECT
+    }
+
+  ...
+  ```
+
+- Now you can install the premium version clash
+  ```
+  ./installer.sh install
+  ```
 
 - The default path for the configuration file is /srv/clash/config.yaml.
 
