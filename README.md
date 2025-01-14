@@ -7,6 +7,11 @@ This repository is a tutorial that shares how to configure Clash for the Olares 
 First, we need to install Clash on the device. Since we want to enable TUN mode, we will choose clash-premium.
 Use the [clash-premium-installer](https://github.com/Kr328/clash-premium-installer), which is an installer for clash-premium. This installer also requires clash-core to function, and you can use the backup repository [Kuingsmile/clash-core]((https://github.com/Kuingsmile/clash-core)) (the original author of Clash has unfortunately left ヽ( ຶ▮ ຶ)ﾉ!!!).
 
+## References
+- [Clash Knowledge Base](https://clash.wiki/configuration/getting-started.html)
+- [Tutorial 1](https://www.moralok.com/2023/05/27/how-to-install-clash-on-ubuntu/)
+- [Tutorial 2](https://thatcoders.github.io/Clash%20For%20Linux/)
+- [Tutorial 3](https://kazusa.cc/geek/understanding-clash-configuration-files-in-one-article.html)
 
 ## Installation Points
 
