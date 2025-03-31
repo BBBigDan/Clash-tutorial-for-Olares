@@ -1,0 +1,40 @@
+port: 7890                 # HTTP 代理端口
+socks-port: 7891           # SOCKS 代理端口
+allow-lan: true            # 允许局域网访问
+mode: rule                 # 规则模式
+log-level: debug           # 日志级别
+external-controller: '127.0.0.1:9090'
+
+dns:
+    enable: true
+    ipv6: false
+    default-nameserver: [223.5.5.5, 119.29.29.29, 10.233.73.60]
+    enhanced-mode: normal
+    fake-ip-range: 198.18.0.1/16
+    use-hosts: true
+    nameserver: ['https://doh.pub/dns-query', 'https://dns.alidns.com/dns-query']
+    fallback: ['https://doh.dns.sb/dns-query', 'https://dns.cloudflare.com/dns-query', 'https://dns.twnic.tw/dns-query', 'tls://8.8.4.4:853']
+    fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
+
+# TUN 模式配置
+tun:
+  enable: true             # 开启 TUN 模式
+  stack: system            # 使用的 TUN 堆栈，选项可为 'gvisor' 或 'system'
+  auto-route: false        # 自动路由
+  auto-detect-interface: true
+  dns-hijack:
+    - 8.8.8.8:53           # DNS 劫持地址
+    - 1.1.1.1:53
+    - 114.114.114.114:53
+  routing-mark: 100
+
+# proxies 和 proxy-groups 将根据用户输入自动生成
+
+rules:
+    - 'DOMAIN-SUFFIX,services.googleapis.cn,PROXY'
+    - 'DOMAIN-SUFFIX,xn--ngstr-lra8j.com,PROXY'
+    - 'DOMAIN-SUFFIX,help.okztwo.com,DIRECT'
+    - 'IP-CIDR,47.107.66.153/32,DIRECT'
+    # 更多规则...
+    - 'GEOIP,CN,DIRECT'
+    - 'MATCH,PROXY' 
