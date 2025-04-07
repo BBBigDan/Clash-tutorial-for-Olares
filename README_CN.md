@@ -32,7 +32,7 @@ ssh hostname@主机 IP
     ```
 
 ## 安装 Clash
-执行下列命令下载工具: 
+执行下列命令安装clash: 
 
     ```
     ./clash-setup-linux-amd64 install
