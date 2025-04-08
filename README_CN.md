@@ -7,10 +7,7 @@
 # 使用自动化工具安装Clash
 
 ## Video
-<video width="640" height="360" controls>
-  <source src="./guide.mp4" type="video/mp4">
-  您的浏览器不支持视频标签
-</video>
+[guide video](https://github.com/user-attachments/assets/edf6a4d2-d087-4047-841d-3949e8eb2132)
 
 ## 访问 Olares 主机
 你可以通过 SSH 命令远程连接 Olares 主机，或通过控制面板访问 Olares 主机。
