@@ -7,10 +7,7 @@ This repository is a tutorial that shares how to configure Clash for the Olares 
 # Install clash using automated tools
 
 ## Video
-<video width="640" height="360" controls>
-  <source src="./guide.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+[guide video](https://github.com/user-attachments/assets/edf6a4d2-d087-4047-841d-3949e8eb2132)
 
 ## Accessing the Olares Host
 You can remotely connect to the Olares host via SSH command or access it through the control panel.
